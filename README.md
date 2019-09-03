@@ -1209,13 +1209,15 @@ schema.format('YYYY-MM-DD').cast('It is 2012-05-25'); // => Fri May 25 2012 00:0
 
 ## TypeScript Support
 
-If you are using TypeScript installing the Yup typings is recommended
+If you are using TypeScript installing the Yup typings is recommended:
 
 ```sh
 npm install -D @types/yup
 ```
 
-You can now infer a TypeScript type alias using the exported `InferType`. Given the following Yup schema:
+You can now infer a TypeScript type alias using the exported `InferType` if `strictNullChecks` is enabled in your `tsconfig.json`. 
+
+For example, given the following Yup schema:
 
 ```TypeScript
 import * as yup from 'yup';
@@ -1277,3 +1279,5 @@ const fullPerson: Person = {
     birthDate: new Date(1976, 9, 5)
 };
 ```
+
+Also note that if `strictNullChecks` is not enabled in your `compilerOptions` in `tsconfig.json`, then the inferred type will make all required fields optional.
